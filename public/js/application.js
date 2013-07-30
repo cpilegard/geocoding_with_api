@@ -1,7 +1,16 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  var geocoder;
+  var map;
+  function initialize() {
+  	geocoder = new google.maps.Geocoder();
+  	var latlng = new google.maps.LatLng(36.7959, -119.813894);
+  	var mapOptions = {
+	    zoom: 12,
+	    center: latlng,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  }
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  }
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  initialize();
 });
