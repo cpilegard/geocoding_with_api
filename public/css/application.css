@@ -13,3 +13,7 @@ th {
 	width: 100%;
 	margin: 20px auto;
 }
+
+.nav a {
+	padding-right: 10px;
+}

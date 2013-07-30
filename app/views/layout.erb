@@ -19,10 +19,11 @@
   <title>Geocoder</title>
 </head>
 <body>
-  <div class='container'>
+  <div class='container nav'>
     <% if current_user %>
+      <a href='/'>Home</a>
+      <a href='/user/profile'><%= current_user.username %>'s Profile</a>
       <a href='/logout'>Log Out</a>
-      <%= current_user.username %>
     <% else %>
       <a href='/user/signup'>Sign Up</a>
       <a href='/user/login'>Log In</a>

@@ -33,3 +33,7 @@ end
 post '/location' do
   current_user.geocode = Geocode.create(params)
 end
+
+get '/user/profile' do
+  erb :profile
+end
