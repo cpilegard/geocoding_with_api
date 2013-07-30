@@ -13,4 +13,21 @@ $(document).ready(function() {
   }
 
   initialize();
+
+  $('#submit_address').on('click', function(e) {
+  	e.preventDefault();
+  	var address = $('#address').val();
+  	
+  	geocoder.geocode({'address': address}, function(results, status) {
+  		if (status == google.maps.GeocoderStatus.OK) {
+  			console.log(results);
+  			console.log(results[0].formatted_address);
+  			console.log(results[0].geometry.location);
+  			var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      	});
+  		}
+  	});
+  });
 });
