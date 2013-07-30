@@ -20,14 +20,23 @@ $(document).ready(function() {
   	
   	geocoder.geocode({'address': address}, function(results, status) {
   		if (status == google.maps.GeocoderStatus.OK) {
-  			console.log(results);
-  			console.log(results[0].formatted_address);
-  			console.log(results[0].geometry.location);
+  			console.log('lat: '+results[0].geometry.location.lat());
+        console.log('lon: '+results[0].geometry.location.lng());
+
+        $.ajax({
+        	url: '/location',
+        	type: 'post',
+        	data: {	lat: results[0].geometry.location.lat(),
+        					lng: results[0].geometry.location.lng()}
+        });
+
   			var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
       	});
-  		}
+  		} else {
+      	alert('Error: ' + status);
+      }
   	});
   });
 });

@@ -29,3 +29,7 @@ end
 get '/logout' do
   session.clear
 end
+
+post '/location' do
+  current_user.geocode = Geocode.create(params)
+end
