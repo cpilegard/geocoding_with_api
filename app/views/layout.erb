@@ -19,6 +19,15 @@
   <title>Geocoder</title>
 </head>
 <body>
+  <div class='container'>
+    <% if current_user %>
+      <a href='/logout'>Log Out</a>
+      <%= current_user.username %>
+    <% else %>
+      <a href='/user/signup'>Sign Up</a>
+      <a href='/user/login'>Log In</a>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>
