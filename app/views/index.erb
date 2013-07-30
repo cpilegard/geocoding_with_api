@@ -1,6 +1,14 @@
 <div class="container">
-  Enter your address: <input id='address' type='text' name='address'>
-  <input id='submit_address' type='button' value='Submit'>
+  <% if current_user %>
+    <% if !current_user.geocode %>
+    Enter your address: <input id='address' type='text' name='address'>
+    <input id='submit_address' type='button' value='Submit'>
+    <% end %>
+  <% else %>
+    Enter your address: <input id='address' type='text' name='address'>
+    <input id='submit_address' type='button' value='Submit'>
+  <% end %>
+  <h3>User Locations</h3>
   <div id="map-canvas">
   </div>
 </div>
