@@ -22,7 +22,8 @@ $(document).ready(function() {
 				var latLng = new google.maps.LatLng(result[i].lat, result[i].lng);
 				var marker = new google.maps.Marker({
 		      position: latLng,
-		      map: map
+		      map: map,
+		      title: result[i].username
 		  	});
 			}
 		});

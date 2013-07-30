@@ -46,7 +46,9 @@ post '/user_locations' do
   User.all.each do |user|
     puts 'user...'
     if user.geocode
-      latlng = {lat: user.geocode.lat, lng: user.geocode.lng}
+      latlng = { lat: user.geocode.lat,
+                 lng: user.geocode.lng,
+                 username: user.username }
       user_locations << latlng
     end
   end
