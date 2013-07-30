@@ -28,12 +28,29 @@ end
 
 get '/logout' do
   session.clear
+  redirect '/'
 end
 
 post '/location' do
-  current_user.geocode = Geocode.create(params)
+  if current_user.geocode == nil
+    current_user.geocode = Geocode.create(params)
+  end
 end
 
 get '/user/profile' do
   erb :profile
+end
+
+post '/user_locations' do
+  user_locations = []
+  User.all.each do |user|
+    puts 'user...'
+    if user.geocode
+      latlng = {lat: user.geocode.lat, lng: user.geocode.lng}
+      user_locations << latlng
+    end
+  end
+
+  content_type :json
+  user_locations.to_json
 end
