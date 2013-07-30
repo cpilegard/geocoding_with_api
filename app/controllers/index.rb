@@ -44,7 +44,6 @@ end
 post '/user_locations' do
   user_locations = []
   User.all.each do |user|
-    puts 'user...'
     if user.geocode
       latlng = { lat: user.geocode.lat,
                  lng: user.geocode.lng,
