@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var geocoder;
   var map;
+  var info_window;
 
 	function initialize() {
 		geocoder = new google.maps.Geocoder();
@@ -11,6 +12,9 @@ $(document).ready(function() {
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  }
 	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  info_window = new google.maps.InfoWindow({
+			content: "placeholder"
+		});
 	}
 
 	function get_user_locations() {
@@ -25,6 +29,10 @@ $(document).ready(function() {
 		      map: map,
 		      title: result[i].username
 		  	});
+ 			 	google.maps.event.addListener(marker, 'click', function() {
+    			info_window.setContent(this.title);
+					info_window.open(map, this);
+  			});
 			}
 		});
 	}
